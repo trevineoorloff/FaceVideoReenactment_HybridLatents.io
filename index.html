@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="An end-to-end framework simultaneously supports face attribute edits, 
+        facial motions and deformations, and facial identity control for video re-enactment 
+        (both same and cross identity) at 1024x1024 with zero-reliance on explicit structural facial priors.
+        ">
+  <meta name="keywords" content="talking heads, face reenactment, one-shot, StyleGAN, 
+  latent space editing, latent manipulation, hybrid latent spaces">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>One-Shot Face Re-enactment using Hybrid Latent Spaces of StyleGAN2</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FBHPZN38ZP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-FBHPZN38ZP');
+  </script>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./data/css/bulma.min.css">
+  <link rel="stylesheet" href="./data/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./data/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./data/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./data/css/index.css">
+  <link rel="icon" href="./data/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./data/js/fontawesome.all.min.js"></script>
+
+  <style>
+    table {
+      border-collapse: separate;
+      text-indent: initial;
+    }
+    td {
+      display: table-cell;
+      vertical-align: inherit;
+      padding-top: 0px;
+      padding-bottom: 0px;
+      padding-left: 4px;
+      padding-right: 4px;
+    }
+  </style>
+
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-widescreen">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">One-Shot Face Re-enactment using <br>Hybrid Latent Spaces of StyleGAN2</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="">Trevine Oorloff</a>,</span>
+            <span class="author-block">
+              <a href="https://www.umiacs.umd.edu/people/yaser">Yaser Yacoob</a></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"> University of Maryland - College Park</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- arxiv Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (Coming Soon) </span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-widescreen">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            While recent research has progressively overcome the low-resolution 
+            constraint of one-shot facial video re-enactment with the help of 
+            StyleGAN’s high-fidelity portrait generation, these approaches 
+            rely on at least one of the following: explicit 2D/3D priors, 
+            optical flow based warping as motion descriptors, off-the-shelf 
+            encoders, etc., which constrain their performance (e.g., 
+            inconsistent predictions, inability to capture fine details and 
+            facial accessories, poor generalization, artifacts). We propose 
+            an end-to-end framework for simultaneously supporting face 
+            attribute edits, facial motions and deformations, and facial 
+            identity control for video generation. It employs a hybrid 
+            latent-space that encodes a given frame into a pair of latents: 
+            Identity latent, <it>W<sub>ID</sub></it> and Facial deformation 
+            latent, <it>S<sub>F</sub></it> that respectively reside in the 
+            <it>W+</it> and <it>SS</it> spaces of StyleGAN2. Thereby, incorporating 
+            the impressive editability-distortion trade-off of <it>W+</it> and 
+            the high disentanglement properties of <it>SS</it>. These hybrid 
+            latents employ the StyleGAN2 generator to achieve high-fidelity 
+            face video re-enactment at 1024<sup>2</sup>. Furthermore, the model 
+            supports the generation of realistic re-enactment videos with other 
+            latent-based semantic edits (e.g., beard, age, make-up). Qualitative 
+            and quantitative analysis performed against state-of-the-art methods 
+            demonstrate the superiority of the proposed approach. 
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-widescreen">
+        <h2 class="title is-3">Overview</h2>
+          <div align="center">
+            <video id="overview" autoplay controls muted loop width="80%">
+              <source src="data/video/Overview.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              The proposed end-to-end framework <u>simultaneously supports face attribute edits, 
+              facial motions and deformations, and facial identity control</u> for <u>video re-enactment</u> 
+              (both same and cross identity) at <u>1024<sup>2</sup></u> with <u>zero-reliance on explicit structural 
+              facial priors</u>.
+            </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-widescreen">
+        <h2 class="title is-3">Pipeline</h2>
+          <div align="center">
+            <img  width=70% style="max-width:100%;max-height:100%" class="img-responsive" src="data/pipeline.svg" alt="
+            The high-level re-enactment process (Top), the expanded architectures of the
+              encoding (Bottom-Left) and re-enactment (Bottom-Right) 
+              processes are depicted. In encoding, given a frame, the Encoder, E 
+              outputs a pair of latents: Identity latent, W_ID and 
+              Facial-deformation latent S_F. In re-enactment, 
+              S^D_F (of driving frame) is added to W^S_ID (of source frame), transformed using 
+              A(·) to obtain the animated SS latent, which is used 
+              to obtain the re-enacted frame using the StyleGAN2 Generator, G."/>
+            <p>
+              The high-level 
+              re-enactment process (<it>Top</it>), the expanded architectures of the
+              encoding (<it>Bottom-Left</it>) and re-enactment (<it>Bottom-Right</it>) 
+              processes are depicted. In encoding, given a frame, the Encoder, <it>E</it> 
+              outputs a pair of latents: Identity latent, <it>W<sub>ID</sub></it> and 
+              Facial-deformation latent <it>S<sub>F</sub></it>. In re-enactment, 
+              <it>S<sup>D</sup><sub>F</sub></it> (of driving frame) is added to 
+              <it>W<sup>S</sup></sup><sub>ID</sub></it> (of source frame), transformed using 
+              <it>A(·)</it> to obtain the animated <it>SS</it> latent, which is used 
+              to obtain the re-enacted frame using the StyleGAN2 Generator, <it>G</it>.
+            </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-widescreen">
+    <h2 class="title is-3">One-Shot Same Identity Re-enactment</h2>
+      <div align="center">
+        <video id="same_ID_renactment_example_1" autoplay controls muted loop width="70%">
+
+          <source src="data/video/same_id_reenactment/same_id_example_1.mp4"
+                  type="video/mp4">
+        </video>
+      </div>
+      <div align="center">
+        <video id="same_ID_renactment_example_2" autoplay controls muted loop width="70%">
+          <source src="data/video/same_id_reenactment/same_id_example_2.mp4"
+                  type="video/mp4">
+        </video>
+      </div>
+      <div align="center">
+        <video id="same_ID_renactment_example_3" autoplay controls muted loop width="70%">
+
+          <source src="data/video/same_id_reenactment/same_id_example_3.mp4"
+                  type="video/mp4">
+        </video>
+      </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-widescreen">
+    <h2 class="title is-3">One-Shot Cross Identity Re-enactment</h2>
+    <div align="center">
+      <video id="cross_ID_renactment_example_1" autoplay controls muted loop width="70%">
+
+        <source src="data/video/cross_id_reenactment/cross_id_example_1.mp4"
+                type="video/mp4">
+      </video>
+    </div>
+    <div align="center">
+      <video id="cross_ID_renactment_example_2" autoplay controls muted loop width="70%">
+
+        <source src="data/video/cross_id_reenactment/cross_id_example_2.mp4"
+                type="video/mp4">
+      </video>
+    </div>
+    <div align="center">
+      <video id="cross_ID_renactment_example_3" autoplay controls muted loop width="70%">
+
+        <source src="data/video/cross_id_reenactment/cross_id_example_3.mp4"
+                type="video/mp4">
+      </video>
+    </div>
+      
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-widescreen">
+    <h2 class="title is-3">One-Shot Robustness</h2>
+    <div align="center">
+      <video id="oneshot_robustness_example_1" autoplay controls muted loop width="70%">
+
+        <source src="data/video/one_shot_robustness/oneshot_robustness_example_1.mp4"
+                type="video/mp4">
+      </video>
+    </div>
+    <div align="center">
+      <video id="oneshot_robustness_example_2" autoplay controls muted loop width="70%">
+
+        <source src="data/video/one_shot_robustness/oneshot_robustness_example_2.mp4"
+                type="video/mp4">
+      </video>
+    </div>     
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-widescreen content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{oorloff2022expressivetalkingheads,
+      title={Expressive Talking Head Video Encoding in StyleGAN2 Latent-Space},
+      author={Trevine Oorloff and Yaser Yaoob},
+      year={2022},
+      eprint={2203.14512},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+}</code></pre>
+  </div>
+</section>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://arxiv.org/pdf/2203.14512.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/trevineoorloff/Encode-in-Style" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+             The source code of this webpage is based on the <a href="https://github.com/nerfies/nerfies.github.io/"> Nerfies</a> project webpage.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
