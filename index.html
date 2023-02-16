@@ -25,6 +25,9 @@
 
     gtag('config', 'G-FBHPZN38ZP');
   </script>
+  <script type="text/javascript"
+  src="https://www.maths.nottingham.ac.uk/plp/pmadw/LaTeXMathML.js">
+  </script>
 
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
@@ -138,13 +141,13 @@
             attribute edits, facial motions and deformations, and facial 
             identity control for video generation. It employs a hybrid 
             latent-space that encodes a given frame into a pair of latents: 
-            Identity latent, <it>W<sub>ID</sub></it> and Facial deformation 
-            latent, <it>S<sub>F</sub></it> that respectively reside in the 
-            <it>W+</it> and <it>SS</it> spaces of StyleGAN2. Thereby, incorporating 
-            the impressive editability-distortion trade-off of <it>W+</it> and 
-            the high disentanglement properties of <it>SS</it>. These hybrid 
+            Identity latent, $W_{ID}$ and Facial deformation 
+            latent, $S_F$ that respectively reside in the 
+            $W+$ and $SS$ spaces of StyleGAN2. Thereby, incorporating 
+            the impressive editability-distortion trade-off of $W+$ and 
+            the high disentanglement properties of $SS$. These hybrid 
             latents employ the StyleGAN2 generator to achieve high-fidelity 
-            face video re-enactment at 1024<sup>2</sup>. Furthermore, the model 
+            face video re-enactment at $1024^2$. Furthermore, the model 
             supports the generation of realistic re-enactment videos with other 
             latent-based semantic edits (e.g., beard, age, make-up). Qualitative 
             and quantitative analysis performed against state-of-the-art methods 
@@ -162,14 +165,14 @@
         <h2 class="title is-3">Overview</h2>
           <div align="center">
             <video id="overview" autoplay controls muted loop width="80%">
-              <source src="data/video/Overview.mp4"
+              <source src="data/video/Overview_2.mp4"
                       type="video/mp4">
             </video>
             <p>
-              The proposed end-to-end framework <u>simultaneously supports face attribute edits, 
-              facial motions and deformations, and facial identity control</u> for <u>video re-enactment</u> 
-              (both same and cross identity) at <u>1024<sup>2</sup></u> with <u>zero-reliance on explicit structural 
-              facial priors</u>.
+              The proposed end-to-end framework <b>simultaneously supports face attribute edits, 
+              facial motions and deformations, and facial identity control</b> for <b>video re-enactment</b> 
+              (both same and cross identity) at <b>1024<sup>2</sup></b> with <b>zero-reliance on explicit structural 
+              facial priors</b>.
             </p>
     </div>
   </div>
@@ -193,12 +196,12 @@
               re-enactment process (<it>Top</it>), the expanded architectures of the
               encoding (<it>Bottom-Left</it>) and re-enactment (<it>Bottom-Right</it>) 
               processes are depicted. In encoding, given a frame, the Encoder, <it>E</it> 
-              outputs a pair of latents: Identity latent, <it>W<sub>ID</sub></it> and 
-              Facial-deformation latent <it>S<sub>F</sub></it>. In re-enactment, 
-              <it>S<sup>D</sup><sub>F</sub></it> (of driving frame) is added to 
-              <it>W<sup>S</sup></sup><sub>ID</sub></it> (of source frame), transformed using 
-              <it>A(·)</it> to obtain the animated <it>SS</it> latent, which is used 
-              to obtain the re-enacted frame using the StyleGAN2 Generator, <it>G</it>.
+              outputs a pair of latents: Identity latent, $W_{ID}$ and 
+              Facial-deformation latent $S_F$. In re-enactment, 
+              ${S^D}_F$ (of driving frame) is added to 
+              ${W^S}_{ID}$ (of source frame), transformed using 
+              $A(·)$ to obtain the animated $SS$ latent, which is used 
+              to obtain the re-enacted frame using the StyleGAN2 Generator, $G$.
             </p>
     </div>
   </div>
@@ -207,6 +210,11 @@
 <section class="section">
   <div class="container is-widescreen">
     <h2 class="title is-3">One-Shot Same Identity Re-enactment</h2>
+      <div>
+        <p>
+          <b>Experiment:</b> Re-enactment using a single source frame and a driving sequence belonging to the <u>same identity</u>. 
+        </p>
+      </div>
       <div align="center">
         <video id="same_ID_renactment_example_1" autoplay controls muted loop width="70%">
 
@@ -233,6 +241,11 @@
 <section class="section">
   <div class="container is-widescreen">
     <h2 class="title is-3">One-Shot Cross Identity Re-enactment</h2>
+    <div>
+      <p>
+        <b>Experiment:</b> Re-enactment using a single source frame and a driving sequence belonging to the <u>different identities</u>. 
+      </p>
+    </div>
     <div align="center">
       <video id="cross_ID_renactment_example_1" autoplay controls muted loop width="70%">
 
@@ -261,6 +274,11 @@
 <section class="section">
   <div class="container is-widescreen">
     <h2 class="title is-3">One-Shot Robustness</h2>
+    <div>
+      <p>
+        <b>Experiment:</b> Heatmaps of same identity re-enactment reconstruction loss averaged over 5 runs, each initiated with a different source frame. Measures the robustness of re-enactment to source frames with diverse head-poses and expressions. 
+      </p>
+    </div>
     <div align="center">
       <video id="oneshot_robustness_example_1" autoplay controls muted loop width="70%">
 
@@ -281,11 +299,11 @@
 <section class="section" id="BibTeX">
   <div class="container is-widescreen content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{oorloff2022expressivetalkingheads,
-      title={Expressive Talking Head Video Encoding in StyleGAN2 Latent-Space},
+    <pre><code>@article{oorloff2023facereenact_hybrid,
+      title={One-Shot Face Re-enactment using Hybrid Latent Spaces of StyleGAN2},
       author={Trevine Oorloff and Yaser Yaoob},
-      year={2022},
-      eprint={2203.14512},
+      year={2023},
+      eprint={},
       archivePrefix={arXiv},
       primaryClass={cs.CV},
 }</code></pre>
@@ -296,15 +314,15 @@
 
 <footer class="footer">
   <div class="container">
-    <div class="content has-text-centered">
+    <!-- <div class="content has-text-centered">
       <a class="icon-link"
-         href="https://arxiv.org/pdf/2203.14512.pdf">
+         href="">
         <i class="fas fa-file-pdf"></i>
       </a>
-      <a class="icon-link" href="https://github.com/trevineoorloff/Encode-in-Style" class="external-link" disabled>
+      <a class="icon-link" href="" class="external-link" disabled>
         <i class="fab fa-github"></i>
       </a>
-    </div>
+    </div> -->
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
